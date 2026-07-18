@@ -1,0 +1,85 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+
+class Node{
+    public:
+    int data;
+    Node*next;
+    
+
+    public:
+    Node(int data1,Node* next1){
+        data = data1;
+        next = next1;
+      
+    }
+
+    public:
+    Node(int data1){
+        data = data1;
+        next = nullptr;
+       
+    }
+};
+
+Node* convertArr2LL(vector<int> &arr){
+    if(arr.empty()) return nullptr;
+
+    Node* head = new Node(arr[0],nullptr);
+    Node* mover = head;
+    for(int i=1;i<arr.size();i++){
+        Node* temp = new Node(arr[i],nullptr);
+        mover->next = temp;
+        mover = temp;
+    }
+    
+    return head;
+}
+
+int helper(Node* temp){
+    
+    if(temp==NULL) return 1;
+    int carry = helper(temp->next);
+    temp->data = temp->data+carry;
+    if(temp->data<10) return 0;
+    temp->data = 0;
+    return 1;
+    
+}
+
+Node* add1toLL(Node* head){
+    int carry = helper(head);
+    if(carry ==1){
+        Node* newHead = new Node(1);
+        newHead->next = head;
+        return newHead;
+    }
+    return head;
+}
+
+void print(Node*head){
+    while(head != NULL){
+        cout << head->data<<" ";
+        head = head->next;
+    }
+}
+
+int main(){
+    int n;
+    cin >> n;
+    vector<int>a(n);
+    for(int i=0;i<n;i++){
+        cin >> a[i];
+    }
+    Node* head = convertArr2LL(a);
+    head = add1toLL(head);
+    print(head);
+    return 0;
+}
+
+// time complexity 
+// TC = O(n)
+
+// space complexity
+// SC = O(n)
