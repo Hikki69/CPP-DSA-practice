@@ -1,0 +1,24 @@
+// Pseudocode
+
+Node* intersectionPoint(Node* head1,Node* head2){
+    Node* temp1 = head1;
+    Node* temp2 = head2;
+    map<Node,int>mpp;
+    while(temp1!=NULL){
+        mpp[temp1] = 1;
+        temp1 = temp1->next;
+    }
+    while(temp2!=NULL){
+        if(mpp.find(temp2)){
+            return temp2;
+        }
+        temp2 =temp2->next;
+    }
+    return NULL;   
+}
+
+// time complexity 
+// TC = O(n1 x tc(map))+O(n2 x tc(map))
+
+// space complexity
+// SC = O(n1)

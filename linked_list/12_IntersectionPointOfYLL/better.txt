@@ -1,0 +1,37 @@
+// Pseudocode
+
+Node* intersectionPoint(Node* head1,Node* head2){
+    Node* temp1 = head1; int t1 =0;
+    Node* temp2 = head2; int t2 = 0;
+    while(temp1!=NULL){
+        t1++;
+        temp1 = temp1->next;
+    }
+    while(temp2!=NULL){
+        t2++;
+        temp2 = temp2->next;
+    }
+    if(t1<t2){
+       return collisionPoint(head1,head2,t2-t1);
+    }else{
+        return collisionPoint(head2,head1,t1-t2);
+    }
+}
+
+Node* collisionPoint(h1,h2,d){
+    while(d){
+       d--;
+       h1 = h1->next; 
+    }
+    while(h1!=h2){
+        h1 = h1->next;
+        h2 = h2->next;
+    }
+    return h1;
+}
+
+// time complexity 
+// TC = O(N1+2N2)  assuming N2 is the length of larger LL
+
+// space complexity
+// SC = O(1) 
