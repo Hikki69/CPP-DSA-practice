@@ -1,0 +1,19 @@
+// Pseudocode 
+
+bool loopInL(Node* head){
+    Node* slow = head;
+    Node* fast = head;
+
+    while(fast!=NULL && fat->next!=NULL){
+        slow = slow->next;
+        fast = fast->next->next;
+        if(slow == fast) return true;
+    }
+    return false;
+}
+
+// time complexity 
+// TC = O(N)
+
+// space complexity
+// SC = O(1)
