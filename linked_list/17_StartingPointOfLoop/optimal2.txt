@@ -1,0 +1,26 @@
+// Pseudocode
+
+Node* startingPointOfLoop(Node* head){
+    Node* fast = head;
+    Node* slow = head;
+    while(fast!=NULL && fast->next !=NULL){
+        slow = slow->next;
+        fast = fast->next->next;
+        if(slow == fast) {
+            slow = head;
+            while(slow!=fast) {
+                slow = slow->next;
+                fast = fast->next;
+                if(slow == fast) return slow;
+            }
+        }
+    }
+    
+    return NULL;
+}
+
+// time complexity
+// TC = O(n)
+
+// space complexity 
+// SC = O(1)

@@ -1,0 +1,21 @@
+// Pseudocode
+
+Node* startingPointOfLoop(Node* head){
+    Node* temp = head;
+    map<Node*,int>mpp;
+    while(temp!=NULL){
+        if(mpp.find(temp)){
+            return temp;
+            break;
+        }
+        mpp[temp] = 1;
+        temp = temp->next;
+    }
+    return NULL;
+}
+
+// time complexity
+// TC = O(n x logn)
+
+// space complexity 
+// SC = O(n)
